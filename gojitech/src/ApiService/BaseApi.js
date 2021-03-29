@@ -22,6 +22,9 @@ async function handleApiError(error) {
     if (error.response) {
       switch (error.response.status) {
         case 401:
+          localStorage.removeItem('jwt');
+          localStorage.removeItem('twitchAccessToken');
+          window.location.href = '/sign-in';
           return Unauthorized;
         case 408:
           return Timeout;

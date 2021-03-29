@@ -7,11 +7,11 @@ import { RouteWithLayout } from '../Components/';
 import Dashboard from '../Views/Dashboard';
 
 const isLoggedIn = () => {
-  return true;
+  return (localStorage.getItem('jwt') && localStorage.getItem('twitchAccessToken'));
 }
 
 const AuthenticatedRoute = ({ component: Component, ...rest }) => (
-  isLoggedIn() === true ?
+  isLoggedIn() ?
   <RouteWithLayout component={Component} {...rest}  /> 
   :   <Redirect
   to="/sign-in"
@@ -21,7 +21,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
 const Routes = () => {
   return (
     <Switch>
-     <RouteWithLayout
+     <AuthenticatedRoute
         component={Dashboard}
         exact
         path="/"
