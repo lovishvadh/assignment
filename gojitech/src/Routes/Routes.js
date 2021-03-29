@@ -1,0 +1,44 @@
+import React from 'react';
+import { Switch, Redirect } from 'react-router-dom';
+import {
+  SignIn as SignInView,
+} from '../Views';
+import { RouteWithLayout } from '../Components/';
+import Dashboard from '../Views/Dashboard';
+
+const isLoggedIn = () => {
+  return true;
+}
+
+const AuthenticatedRoute = ({ component: Component, ...rest }) => (
+  isLoggedIn() === true ?
+  <RouteWithLayout component={Component} {...rest}  /> 
+  :   <Redirect
+  to="/sign-in"
+/>
+)
+
+const Routes = () => {
+  return (
+    <Switch>
+     <RouteWithLayout
+        component={Dashboard}
+        exact
+        path="/"
+      />
+       <RouteWithLayout
+        component={SignInView}
+        exact
+        path="/sign-in"
+      />
+      <RouteWithLayout
+        component={<div>Not Found</div>}
+        exact
+        path="/not-found"
+      />
+      <Redirect to="/not-found" /> 
+    </Switch>
+  );
+};
+
+export default Routes;
