@@ -6,6 +6,7 @@ import {
     InternalServerError,
     SomeError,
   } from '../Utils/MockApiFailure';
+import browserHistory from "../history";
 
 const BaseAxios = axios.create({
     baseURL: 'http://3.16.23.133/',
@@ -24,7 +25,7 @@ async function handleApiError(error) {
         case 401:
           localStorage.removeItem('jwt');
           localStorage.removeItem('twitchAccessToken');
-          window.location.href = '/sign-in';
+          browserHistory.push('/sign-in');
           return Unauthorized;
         case 408:
           return Timeout;

@@ -1,9 +1,8 @@
 import './App.css';
-import { createBrowserHistory } from 'history';
 import { Router } from 'react-router-dom';
 import Routes from './Routes';
 import './ApiService/twitchWs';
-const browserHistory = createBrowserHistory();
+import browserHistory from './history';
 
 function App() {
   return (
