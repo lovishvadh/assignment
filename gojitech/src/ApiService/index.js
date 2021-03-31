@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let authURL = `https://id.twitch.tv/oauth2/authorize?client_id=p5tkpvmr51c7grjszz8rcrwf413vah&redirect_uri=http://localhost:3000/&response_type=token&scope=channel:read:subscriptions%20user:read:email`;
+let authURL = `https://id.twitch.tv/oauth2/authorize?client_id=p5tkpvmr51c7grjszz8rcrwf413vah&redirect_uri=https://d31tgoxord196p.cloudfront.net/sign-in&response_type=token&scope=channel:read:subscriptions%20user:read:email`;
 
 
 const signInWithTwitch = async () => {
